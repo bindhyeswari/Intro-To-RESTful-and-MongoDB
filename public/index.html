@@ -46,9 +46,13 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="contact in contacts">
-                                <td>{{contact.name}}</td>
-                                <td>{{contact.email}}</td>
-                                <td>{{contact.tel}}</td>
+                                <td><input type="text" ng-disabled="!contact.edit" ng-model="contact.name"/></td>
+                                <td><input type="text" ng-disabled="!contact.edit" ng-model="contact.email"/></td>
+                                <td><input type="text" ng-disabled="!contact.edit" ng-model="contact.tel"/></td>
+                                <td>
+                                    <button ng-hide="contact.edit" ng-click="contact.edit = !contact.edit">Edit</button>
+                                    <button ng-show="contact.edit" ng-click="contact.edit = !contact.edit">Save</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

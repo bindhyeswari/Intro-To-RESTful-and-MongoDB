@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="contactsApp">
 <head>
     <meta charset="UTF-8">
     <title>Contacts Application</title>
@@ -7,5 +7,57 @@
 </head>
 <body>
     <h1>Contacts Application</h1>
+    <section ng-controller="ContactsController">
+        <header>
+            <h2>Contacts - CRUD</h2>
+        </header>
+        <div>
+            {{message}}
+        </div>
+
+        <section>
+            <header>
+                <h3>Create a Contact</h3>
+            </header>
+            <div>
+                <input type="text" placeholder="name" ng-model="user.name"/>
+                <input type="email" placeholder="email" ng-model="user.email"/>
+                <input type="tel" placeholder="tel" ng-model="user.tel"/>
+                <input type="password" placeholder="password" ng-model="user.password"/>
+                <button ng-click="save()">Create Contact</button>
+                <div class="panel" ng-show="message">Successfully saved information.</div>
+            </div>
+        </section>
+
+        <section>
+            <header>
+                <h3>List All Contacts</h3>
+            </header>
+            <div>
+                <button ng-click="list()">List All Contacts</button>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Tel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="contact in contacts">
+                                <td>{{contact.name}}</td>
+                                <td>{{contact.email}}</td>
+                                <td>{{contact.tel}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/app.js"></script>
 </body>
 </html>
